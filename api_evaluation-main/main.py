@@ -17,8 +17,8 @@ class Contacto(BaseModel):
 @app.post("/contactos")
 async def crear_contacto(contacto: Contacto):
     """Crea un nuevo contacto."""
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO contactos (email, nombre, telefono) VALUES (?, ?, ?)',
+    c = conn.cursor()
+    c.execute('INSERT INTO contactos (email, nombre, telefono) VALUES (?, ?, ?)',
                     (contacto.email, contacto.nombre, contacto.telefono))
     conn.commit()
     return contacto
@@ -26,8 +26,8 @@ async def crear_contacto(contacto: Contacto):
 @app.get("/contactos")
 async def obtener_contacto():
     """Obtiene todos los contactos."""
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM contactos')
+    c = conn.cursor()
+    c.execute('SELECT * FROM contactos')
     response = []
     for row in cursor:
         contacto = Contactos(email=row[0], nombre=row[1], telefono=row[2])
