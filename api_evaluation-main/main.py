@@ -29,8 +29,8 @@ async def obtener_contacto():
     c = conn.cursor()
     c.execute('SELECT * FROM contactos')
     response = []
-    for row in cursor:
-        contacto = Contactos(email=row[0], nombre=row[1], telefono=row[2])
+    for row in c:
+        contacto = {"email":row[0], "nombre":row[1], "telefono":row[2]}
         response.append(contacto)
     return response
 
@@ -38,8 +38,8 @@ async def obtener_contacto():
 async def obtener_contacto(email: str):
     """Obtiene un contacto por su email."""
     # Consulta el contacto por su email
-    coursor = conn.cursor()
-    cursor.execute('SELECT * FROM contactos WHERE email = ?', (email,))
+    c = conn.cursor()
+    c.execute('SELECT * FROM contactos WHERE email = ?', (email,))
     row = cursor.fetchone()
     if row: 
         contacto = Contacto(email=row[0], nombre=row[1], telefono=row[2])
