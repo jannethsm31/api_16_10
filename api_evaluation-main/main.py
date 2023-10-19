@@ -40,9 +40,9 @@ async def obtener_contacto(email: str):
     # Consulta el contacto por su email
     c = conn.cursor()
     c.execute('SELECT * FROM contactos WHERE email = ?', (email,))
-    row = cursor.fetchone()
-    if row: 
-        contacto = Contacto(email=row[0], nombre=row[1], telefono=row[2])
+    contacto = None
+    if row in c: 
+        contacto = {"email":row[0], "nombre":row[1], "telefono":row[2]})
         return contacto
     else:
         return None
