@@ -61,8 +61,8 @@ async def actualizar_contacto(email: str, contacto: Contacto):
 async def eliminar_contacto(email: str):
     """Elimina un contacto."""
     # TODO Elimina el contacto de la base de datos
-    cursor = conn.cursor()
-    cursor.execute('DELETE contactos WHERE email = ?', (email,))
+    c = conn.cursor()
+    c.execute('DELETE FROM contactos WHERE email = ?', (email,))
     conn.commit()
     return {"message": "Contacto eliminado con éxito"}
 
