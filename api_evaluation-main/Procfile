@@ -1,1 +1,1 @@
-web: gunicorn -k uvicorn.workers.uvicornworker --bind 0.0.0.0:$PORT heroko:app
+web: gunicorn -k uvicorn.workers.uvicornworker --bind 0.0.0.0:$PORT main:app
