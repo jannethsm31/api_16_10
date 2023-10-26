@@ -13,11 +13,11 @@ class Contacto(BaseModel):
     telefono: str
 
 conn = mysql.connector.connect(
-    user='',
-    password='',
-    host='',
-    port='',
-    database=''
+    user='xri3jw3bmuff02wl',
+    password='pbc0vulglgr3wl6gv',
+    host='i0rgccmrx3at3wv3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    port='3306',
+    database='p7d1rpd1knn33fd5'
 )
 
 @app.get("/")
