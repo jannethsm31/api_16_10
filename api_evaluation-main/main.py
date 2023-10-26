@@ -1,9 +1,9 @@
 import fastapi
-import sqlite3
+import mysql.connector
 from pydantic import BaseModel
 
 # Crea la base de datos
-conn = sqlite3.connect("contactos.db")
+# conn = sqlite3.connect("contactos.db")
 
 app = fastapi.FastAPI()
 
@@ -12,8 +12,19 @@ class Contacto(BaseModel):
     nombre: str
     telefono: str
 
-# Rutas para las operaciones CRUD
+conn = mysql.connector.connect(
+    user='',
+    password='',
+    host='',
+    port='',
+    database=''
+)
 
+@app.get("/")
+def inicio():
+    return {'Developer by': 'Janneth f:'}
+
+# Rutas para las operaciones CRUD
 @app.post("/contactos")
 async def crear_contacto(contacto: Contacto):
     """Crea un nuevo contacto."""
