@@ -78,6 +78,4 @@ async def eliminar_contacto(email: str):
     conn.commit()
     return {"message": "Contacto eliminado con éxito"}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+
